@@ -1,3 +1,4 @@
+// 有头链表
 function LinkList() {
   function Node (element) {
     this.element = element;
@@ -16,7 +17,7 @@ function LinkList() {
     console.log('link', link);
   }
   // 查找节点
-  this.findCurrNode = function(node) {
+  var findCurrNode = function(node) {
     var curr_node = this.head;
     while (curr_node.element !== node) {
       curr_node = curr_node.next; // 寻找下一个节点
@@ -26,12 +27,12 @@ function LinkList() {
   // 插入节点, 在已知节点的后面插入
   this.insert = function (new_value, node) {
     let new_node = new Node(new_value);
-    let curr_node = this.findCurrNode(node);
+    let curr_node = findCurrNode(node);
     new_node.next = curr_node.next;
     curr_node.next = new_node;
   }
   // 查找上一个节点
-  this.findPrevNode = function (node) {
+  var findPrevNode = function (node) {
     let prevNode = this.head;
     while (prevNode.next === node && prevNode.next !== null) {
       prevNode = prevNode.next;
@@ -40,7 +41,7 @@ function LinkList() {
   }
   // 删除节点 删除已知后的节点
   this.remove = function (node) {
-    let prev_node = this.findPrevNode(node);
+    let prev_node = findPrevNode(node);
     if (prev_node.next.next !== null) {
       prev_node.next = prev_node.next.next;
     } else {
