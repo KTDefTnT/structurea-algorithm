@@ -1,3 +1,6 @@
+/**
+ * @param {数据} data 
+ */
 var Node = function(data){
   this.data = data;
   this.next = null;
