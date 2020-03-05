@@ -58,7 +58,7 @@ function HeadlessLinklist () {
     } else if (index < 0 || index > this.length) {
       return false;
     } else {
-      if (index === 0) {
+      if (index === 0) { // 如果index = 0，则直接插入作为头节点
         newNode.next = head;
         head = newNode;
       } else {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
