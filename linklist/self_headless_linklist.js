@@ -33,7 +33,7 @@ function HeadlessLinklist () {
         link += currNode.data + '->';
         currNode = currNode.next;
       }
-      console.log(link + 'null');
+      console.log('display', link + 'null');
     }
   }
 
@@ -47,6 +47,7 @@ function HeadlessLinklist () {
       tail.next = new_node;
       tail = new_node;
     }
+    console.log('head', head);
     length++;
   }
 
