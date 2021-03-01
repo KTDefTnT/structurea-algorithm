@@ -29,24 +29,20 @@ function in_order (node) {
   if (node === null) return null;
   var stack = new Stack();
   var curr_node = node;
-  while (curr_node) {
-    if (curr_node.rightChild) {
-      if (stack.top() === curr_node.rightChild) {
-        console.log(curr_node.data);
-        curr_node = stack.pop();
-      } else {
-        stack.push(curr_node.rightChild);
-      }
-
+  while (true) {
+    // 处理左子树
+    while (curr_node) {
       stack.push(curr_node);
+      curr_node = curr_node.leftChild;
     }
 
-    if (curr_node.leftChild) {
-      curr_node = curr_node.leftChild;
-    } else {
-      console.log(curr_node.data);
-      curr_node = stack.pop();
-    }   
+    let pop_node = stack.pop();
+    console.log(pop_node.data);
+    // 不能直接输出当前节点，当前节点可能还存在右子树
+    curr_node = pop_node.rightChild;
+    
+    // 如果curr_node没值 而且stack空了 代表树全部处理完了
+    if (!curr_node && stack.isEmpty()) break;
   }
 }
 
