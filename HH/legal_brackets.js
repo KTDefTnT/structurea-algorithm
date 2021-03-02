@@ -7,7 +7,7 @@
  * 
  * 4、判断栈是否为空，为空则合法
  */
-var { Stack } = require('./index');
+var Stack = require('./index');
 function is_legal_brackets(string) {
   var stack = new Stack();
   for(let i = 0; i < string.length; i++) {

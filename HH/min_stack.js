@@ -1,9 +1,9 @@
 /**
  * 实现一个栈，除了常见的push，pop方法以外，提供一个min方法，返回栈里最小的元素，且时间复杂度为o(1) - 栈顶就是最小值
  * 
- * 
+ * 分而治之： data_stack只进行数据的处理，min_stack只进行最小值存储处理
  */
-const { Stack } = require('./index.js');
+const Stack = require('./index.js');
 
 function MinStack() {
   var data_stack = new Stack(); // 存储数据

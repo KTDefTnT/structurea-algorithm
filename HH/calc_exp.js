@@ -1,4 +1,4 @@
-const { Stack } = require('./index.js');
+const Stack = require('./index.js');
 /**
  * 1、碰到数字则压入栈内
  * 2、碰到符号 连续取出两个数字进行计算的到 res，第二个字符 操作第一个字符
