@@ -23,7 +23,7 @@ function Link() {
     let current_node = head;
     let current_index = 0;
     while(current_index < index) {
-      current_node = current_node.next();
+      current_node = current_node.next;
       current_index++;
     }
     return current_node;
@@ -44,7 +44,6 @@ function Link() {
     }
     tail = new_node;
   }
-
 
   // 在指定位置加入节点
   this.insert = function(index, data) {
@@ -76,6 +75,7 @@ function Link() {
     let delNode = prevNode.next;
     let nextNode = delNode.next;
     prevNode.next = nextNode;
+    length--;
     return delNode;
   }
 
@@ -85,17 +85,86 @@ function Link() {
     let delNode = head;
     let nextNode = head.next;
     head = nextNode;
+    length--;
     return delNode;
   }
 
+  // 删除尾节点
   this.remove_tail = function() {
     if(head === null) return null;
     let curr_node = head;
+    let del_node = tail;
     // 当前节点没有next时，此节点为tail的前一个节点
     while(curr_node.next.next) {
       curr_node = curr_node.next;
     }
     curr_node.next = null;
+    tail = curr_node;
+    length--;
+    return del_node;
+  }
+
+  // indexOf，返回指定元素的索引
+  this.indexOf = function(data) {
+    if(head === null) return null;
+    let current_node = head;
+    let index = 0;
+    while(current_node.next !==null) {
+      if (current_node.data === data) {
+        return index;
+      }
+      current_node = current_node.next;
+      index++;
+    }
+    return null;
+  }
+
+  // get，返回指定索引位置的元素
+  this.get = function(index) {
+    // 判断边界值
+    if (index < 0 || index >= length) {
+      return null;
+    }
+    return get_node(index);
+  }
+
+  // 返回头节点
+  this.head = function() {
+    return head;
+  }
+
+  // 返回尾节点
+  this.tail = function() {
     return tail;
   }
+
+  // 返回链表长度
+  this.length = function() {
+    return length;
+  }
+
+  // 链表是否为空
+  this.isEmpty = function() {
+    return length === 0;
+  }
+
+  // 清空链表
+  this.clear = function() {
+    head = null;
+    tail = null;
+    length = 0;
+  }
+
+  // 打印链表
+  this.print = function() {
+    let current_node = head;
+    let index = 0;
+    while(current_node) {
+      console.log(`${current_node.data} ↓ -index=${index}`);
+      current_node = current_node.next;
+      index++;
+    }
+  }
 }
+
+module.exports = Link;
