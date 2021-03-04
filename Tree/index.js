@@ -133,9 +133,11 @@ function BinaryTree() {
   }
 }
 
-var binaryTree = new BinaryTree();
-binaryTree.init_tree('A(B(D,E(G,)),C(,F))#');
-// let rootNode = binaryTree.get_root();
-// binaryTree.in_order(rootNode);
-// console.log('size', binaryTree.size());
-console.log(binaryTree.find('B'));
+// var binaryTree = new BinaryTree();
+// binaryTree.init_tree('A(B(D,E(G,)),C(,F))#');
+// // let rootNode = binaryTree.get_root();
+// // binaryTree.in_order(rootNode);
+// // console.log('size', binaryTree.size());
+// console.log(binaryTree.find('B'));
+
+module.exports = BinaryTree;
