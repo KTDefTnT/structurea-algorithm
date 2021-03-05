@@ -43,7 +43,7 @@ function BinaryTree() {
     }
   }
 
-  // in_order 中序遍历算法
+  // in_order 中序遍历算法 - 递归
   this.in_order = function(node) {
     // 递归终止条件
     if(node === null) {
@@ -56,7 +56,29 @@ function BinaryTree() {
     this.in_order(node.rightChild);
   }
 
-  // 前序遍历
+  // 前序遍历 - 迭代
+  this.in_order_itea = function(node) {
+    let stack = new Stack(); // 右子树存入stack中
+    let curr_node = node;
+    while(true) {
+      while(curr_node) {
+        // 先要处理左子树,当前节点怎么办? 放到栈里,等左子树处理完了弹出栈顶
+        stack.push(curr_node);
+        // 先处理左子树
+        curr_node = curr_node.leftChild;
+      }
+      // 处理栈顶
+      let pop_item = stack.pop();
+      console.log(pop_item.leftChild); // 打印左子树 - 当前左子树全部处理完毕
+      // 处理右子树,如果右子树是null,下一次循环,恰好可以跳过while(curr_node) 的这个循环
+      curr_node = pop_item.rightChild;
+      if(!curr_node && stack.isEmpty()){
+          break;
+      }
+    }
+  }
+
+  // 前序遍历 - 递归
   this.pre_order = function(node) {
     // 递归终止条件
     if(node === null) return;
@@ -64,6 +86,20 @@ function BinaryTree() {
     console.log(`${node.data} ↓`);
     this.pre_order(node.leftChild);
     this.pre_order(node.rightChild);
+  }
+
+
+  // 前序遍历 - 迭代
+  this.pre_order_itea = function(node) {
+    let curr_node = node;
+    let left_node = null;
+    let right_node = null;
+    // 先打印自身
+    console.log(`${curr_node.data} ↓`);
+    while(curr_node.leftChild || curr_node.rightChild) {
+      console.log(curr_node.leftChild); // 打印左子树
+      // curr_node = curr_node.leftChild; // 打印左子树
+    }
   }
 
   // 后序遍历
