@@ -31,6 +31,11 @@ class Stack {
   clear() {
     this.items = [];
   }
+
+  // 打印print
+  print() {
+    console.log(this.items);
+  }
 }
 
 module.exports = Stack;
